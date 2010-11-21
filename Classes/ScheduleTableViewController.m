@@ -18,7 +18,8 @@
 #pragma mark -
 #pragma mark Custom Interfaces
 
-// Private interface for Pull down refresh view
+// PULL DOWN REFRESH VIEW PRIVATE INTERFACE
+
 @interface ScheduleTableViewController (Private)
 - (void)dataSourceDidFinishLoadingNewData;
 @end
@@ -30,12 +31,14 @@
 
 #pragma mark -
 #pragma mark Shadow View custom implementation.
+
 @interface ScheduleTableViewController (PrivateMethods)
 - (void)scrollViewDidScroll:(UIScrollView *)sender;
 @end
 
 #pragma mark -
 #pragma mark Custom Implementation for animated tableview reload.
+
 @implementation UITableView (Reload)
 - (void)reloadData:(BOOL)animated {
 	[self reloadData];
@@ -44,10 +47,8 @@
 		[animation setDelegate:self.delegate];	// optional
 		[animation setType:kCATransitionFade];
 		[animation setDuration:0.3];
-		[animation setTimingFunction:[CAMediaTimingFunction
-									  functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+		[animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
 		[animation setFillMode: @"extended"];
-		
 		[[self layer] addAnimation:animation forKey:@"reloadAnimation"];
 	}
 }
@@ -58,7 +59,6 @@
 #pragma mark -
 #pragma mark Main Implementation and synthesize
 
-// Implementation
 @implementation ScheduleTableViewController
 
 @synthesize schedule;
@@ -84,7 +84,8 @@
 		case 1:
 			self.tableData = self.schedule.domestic;
 			break;
-	}	
+	}
+	
 	[self.tableView reloadData:YES];
 }
 
@@ -92,8 +93,6 @@
 #pragma mark Network Connection
 
 -(void)loadData {
-	
-	NSLog(@"Preparing connection");
 	
 	NSURL *urlObject = [[NSURL alloc] initWithString:self.schedule.url];
 	NSURLRequest *request = [[NSURLRequest alloc] initWithURL:urlObject];
@@ -112,15 +111,15 @@
 	else {
 		[self.dataBuffer appendData:data];
 	}
-	
-	NSLog(@"Data received");
 }
 
 - (void) connectionDidFinishLoading:(NSURLConnection*)connection {	
-		
-	NSLog(@"Data loaded");
+	
+	// PARSE XML DATA
 	
 	[self.schedule parseData:dataBuffer];
+	
+	// PICK SCHEDULE TO USE AS PER SEGMENT SELECTED
 	
 	switch (self.segmentButtons.selectedSegmentIndex) {
 		case 0:
@@ -129,11 +128,14 @@
 		case 1:
 			self.tableData = [NSMutableArray arrayWithArray:self.schedule.domestic];
 			break;
-	}		
+	}
 	
-	[self.tableView reloadData]; // Should this be moved to the end of this method?
+	// CLEAR dataBuffer OBJECT, WILL BE USED FOR PULL DOWN REFRESH/RELOADS
 	
 	self.dataBuffer = nil;
+	
+	// LOADING VIEW NEEDS TO BE HIDDEN DURING FIRST LAUNCH
+	// PULL DOWN REFRESH NEEDS TO BE RETRACTED DURING OTHER RELOADS
 	
 	if (firstLaunch == YES) {
 		firstLaunch = NO;
@@ -147,6 +149,8 @@
 		[self.tableView setHidden:NO];
 	}
 	
+	// SCROLL TO TOP CELL, HIDE SEARCH BAR
+	
 	[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];	
     
 	if ([self.tableData count] < 0) {
@@ -156,23 +160,7 @@
 		self.tableView.scrollEnabled = YES;
 	}
 	
-	NSLog(@"Checking data validity");
-	
-	for (NSMutableArray *section in self.schedule.domestic) {
-		for (Flight *flight in section) {
-			NSLog(@"%@", flight.airlineName);
-			NSLog(@"%@", flight.airlineId);
-			NSLog(@"%@", flight.flightId);
-			NSLog(@"%@", flight.route);
-			NSLog(@"%@", flight.status);
-			NSLog(@"%@", flight.date);
-			NSLog(@"%@", flight.scheduled);
-			NSLog(@"%@", flight.estimated);			
-			NSLog(@"----------------------------------");
-		}
-	}	
-	
-	NSLog(@"Schedule and Flight objects ready");
+	[self.tableView reloadData];
 }
 
 
@@ -205,7 +193,9 @@
 }
 
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	
+	// PULL DOWN REFRESH CODE
 	
 	if (scrollView.isDragging) {
 		if (refreshHeaderView.state == EGOOPullRefreshPulling && scrollView.contentOffset.y > -65.0f && scrollView.contentOffset.y < 0.0f && !_reloading) {
@@ -215,10 +205,9 @@
 		}
 	}
 	
+	// FOOTER SHADOW VIEW CODE
+	
     CGRect shadowViewRect;
-    
-    // Reverse logic of the headerShadowView for the footerShadowView.
-    // Fixed bug
     CGFloat shadowViewHeight = self.view.frame.size.height - self.tableView.contentSize.height + self.tableView.contentOffset.y;
     
     if (shadowViewHeight > 0.0) {
@@ -311,6 +300,8 @@
 		cell = nibLoadedCell;
     }
 	
+	// ASSIGN FLIGHT OBJECT
+	
 	Flight *flight;
 	
 	if (tableView == self.tableView) {
@@ -320,10 +311,8 @@
 		flight = [[self.searchData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	}
 	
-	// Set Labels
-	// Flight Name label is set in the colors section		
+	// SETUP LABEL DEFINITIONS
 	
-	// Define Labels
 	UILabel *nameLabel = (UILabel *) [cell viewWithTag:1];	
 	UILabel *flightNumberLabel = (UILabel *) [cell viewWithTag:2];
 	UILabel *routeLabel = (UILabel *) [cell viewWithTag:3];
@@ -336,13 +325,16 @@
 	timeLabel.text = nil;
 	statusLabel.text = nil;
 	
-	// Flight Number		
+	// FLIGHT NUMBER
+	
 	flightNumberLabel.text = flight.flightId;	
 	
-	// Route		
+	// ROUTE
+	
 	routeLabel.text = flight.route;
 	
-	// Time
+	// TIMES
+	
 	if ([flight.estimated isEqualToString:@""]) {
 		timeLabel.text = flight.scheduled;
 	}
@@ -351,13 +343,14 @@
 		statusLabel.text = [NSString stringWithString:@"Estimated"];
 	}	
 	
-	// Status		
+	// FLIGHT STATUS
+	
 	if (flight.status != nil) {
 		statusLabel.text = timeLabel.text;
 		timeLabel.text = flight.status;
 	}
 	
-	// BEGIN COLORS SECTION
+	// COLORS
 	
 	nameLabel.textColor = flight.foregroundColor;
 	flightNumberLabel.textColor = flight.textColor;
@@ -368,10 +361,11 @@
 	timeLabel.shadowColor = flight.timeShadowColor;
 	statusLabel.shadowColor = flight.timeShadowColor;
 	
-	// Set Flight Name label first
-	// Done in this section because it accesses the colorsDictionary file
+	// AIRLINE NAME
 	
 	nameLabel.text = flight.airlineName;
+	
+	// DONE, RETURN
 		
     return cell;
 }
@@ -433,13 +427,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+		
+	// SOME INSTANCE VARIABLES
 	
 	firstLaunch = YES;
 	emptyTableView = YES;
 	
+	// INITIALIZE AND ALLOCATE AN AN NSMUTABLEARRAY FOR SEARCH DATA
+	
 	NSMutableArray *temp = [[NSMutableArray alloc] init];
 	self.searchData = temp;
 	[temp release];
+	
+	// PULL DOWN REFRESH VIEW SETUP
 	
 	if (refreshHeaderView == nil) {
 		refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, 320.0f, self.tableView.bounds.size.height)];
@@ -449,11 +449,14 @@
 		[refreshHeaderView release];				
 	}
 	
+	// NAVIGATION BAR COLORS SETUP
+	
 	[self.navigationBar setTintColor:[UIColor grayColor]];
 	[self.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
 	[self.segmentButtons setTintColor:[UIColor grayColor]];
 	
-    // Shadow view for the table footer.
+    // FOOTER SHADOW VIEW SETUP
+	
     CGRect shadowViewRect = CGRectMake(0.0, 0.0, self.view.frame.size.width, 0.0);
     self.footerShadowView = [[ShadowView alloc] initWithFrame:shadowViewRect];    
 	self.tableView.tableFooterView = self.footerShadowView;
@@ -464,7 +467,8 @@
     [self.tableView reloadData];    
     [self scrollViewDidScroll:nil];
     
-    // Avoid scrolling if there is no content in the tableView. Remember to enable scrolling once you add content.
+    // AVOID SCROLLING IF THE TABLE IS EMPTY
+	
     if (self.tableView.contentSize.height <= 0.0) {
         self.tableView.scrollEnabled = NO;
     }

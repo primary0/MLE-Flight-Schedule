@@ -18,9 +18,6 @@
 
 -(void)populateInternationalAndDomesticSchedules:(NSMutableArray *)schedule {
 	
-	
-	NSLog(@"Begin populating international and domestic");
-	
 	NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"AirlineData" ofType:@"plist"];
 	NSDictionary *colorsDictionary = [NSDictionary dictionaryWithContentsOfFile:plistPath];
 	
@@ -31,8 +28,6 @@
 	NSDate *date;
 	
 	for (NSMutableDictionary *flightDictionary in schedule) {
-		
-		NSLog(@"Processing flight");
 		
 		Flight *flight = [[Flight alloc] init];
 		
@@ -150,20 +145,13 @@
 	[dateFormat autorelease];
 	[internationalArray release];
 	[domesticArray release];
-	
-	NSLog(@"Done populating domestic and internation arrays");
 }
 
 -(NSMutableArray *)sortScheduleByTime:(NSMutableArray *)schedule {
 	
-	
-	NSLog(@"Begin sorting schedule");
-	
 	NSMutableArray *result = [[NSMutableArray alloc] init];
 	NSString *currentDate = [[NSString alloc] init];	
 	NSMutableArray *currentArray;	
-	
-	NSLog(@"Allocated sort stuff");
 	
 	int counter;
 	for (counter = 0; counter < schedule.count; counter++) {
@@ -172,12 +160,8 @@
 		
 		if (![currentDate isEqualToString:flight.date]) {	
 			
-			NSLog(@"Found a new date... ");
-			
 			NSMutableArray *newArray = [[NSMutableArray alloc] init];
 			[newArray addObject:flight];
-			
-			NSLog(@"Added flight to date array");
 			
 			[result addObject:newArray];
 			currentArray = newArray;
@@ -186,20 +170,15 @@
 		}
 		else {
 			[currentArray addObject:flight];
-			NSLog(@"Added flight to existing date array");
 		}
 	}
 	
 	[currentDate release];
 	
 	return [result autorelease];
-	
-	NSLog(@"Done sorting and sectioning schedule");
 }
 
 -(void)parseData:(NSData *)xmlData {
-	
-	NSLog(@"Parsing data now...");
 	
 	CXMLDocument *rssParser = [[[CXMLDocument alloc] initWithData:xmlData options:0 error:nil] autorelease];
 	
@@ -216,7 +195,6 @@
 		}
 		[tempSchedule addObject:flight];				
 		[flight release];
-		NSLog(@"Element processed");
 	}
 	
 	//
@@ -231,15 +209,11 @@
 	
 	self.international = [self sortScheduleByTime:self.international];
 	
-	NSLog(@"International array populated and sorted");
-	
 	//
 	//
 	// REASSIGN DOMESTIC ARRAY TO SORTED/SECTIONED ARRAY
 	
 	self.domestic = [self sortScheduleByTime:self.domestic];
-	
-	NSLog(@"Domestic array populated and sorted");
 }
 
 -(void)dealloc {
