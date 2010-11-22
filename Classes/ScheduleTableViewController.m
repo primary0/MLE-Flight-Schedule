@@ -9,6 +9,7 @@
 #import "ScheduleTableViewController.h"
 #import "Schedule.h"
 #import "Flight.h"
+#import "FlightViewController.h"
 #import "UIColor+i7HexColor.h"
 #import "EGORefreshTableHeaderView.h"
 #import "LoadingView.h"
@@ -27,7 +28,6 @@
 @interface UITableView (Reload)
 - (void)reloadData:(BOOL)animated;
 @end
-
 
 #pragma mark -
 #pragma mark Shadow View custom implementation.
@@ -53,8 +53,6 @@
 	}
 }
 @end
-
-
 
 #pragma mark -
 #pragma mark Main Implementation and synthesize
@@ -119,7 +117,7 @@
 	
 	[self.schedule parseData:dataBuffer];
 	
-	// PICK SCHEDULE TO USE AS PER SEGMENT SELECTED
+	// PICK SCHEDULE TO USE AS PER SEGMENT SELECTED AND LOAD TABLEVIEW
 	
 	switch (self.segmentButtons.selectedSegmentIndex) {
 		case 0:
@@ -129,6 +127,8 @@
 			self.tableData = [NSMutableArray arrayWithArray:self.schedule.domestic];
 			break;
 	}
+	
+	[self.tableView reloadData];
 	
 	// CLEAR dataBuffer OBJECT, WILL BE USED FOR PULL DOWN REFRESH/RELOADS
 	
@@ -159,8 +159,6 @@
 	else {
 		self.tableView.scrollEnabled = YES;
 	}
-	
-	[self.tableView reloadData];
 }
 
 
@@ -390,6 +388,28 @@
 }
 
 #pragma mark -
+#pragma mark Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	FlightViewController *flightViewController = [[FlightViewController alloc] initWithNibName:@"FlightViewController" bundle:nil];
+
+	Flight *flight;
+	
+	if (tableView == self.tableView) {
+		flight = [[self.tableData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	}
+	if(tableView == self.searchDisplayController.searchResultsTableView){
+		flight = [[self.searchData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	}
+	
+	flightViewController.flight = flight;
+	
+	[self.navigationController pushViewController:flightViewController animated:YES];
+	[flightViewController release];
+}
+
+#pragma mark -
 #pragma mark Content Filtering
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
@@ -427,6 +447,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	// SET A PAGE TITLE. NEEDED FOR THE DETAILVIEW'S BACK BUTTON
+	
+	switch (self.segmentButtons.selectedSegmentIndex) {
+		case 0:
+			self.title = @"International";
+			break; 
+		case 1:
+			self.title = @"Domestic";
+			break;
+	}	
 		
 	// SOME INSTANCE VARIABLES
 	
@@ -463,6 +494,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+	
     [super viewWillAppear:animated];    
     [self.tableView reloadData];    
     [self scrollViewDidScroll:nil];
@@ -475,17 +507,20 @@
 }
 
 - (void)viewDidUnload {
+	
 	refreshHeaderView=nil;	
 }
 
 #pragma mark -
 #pragma mark Memory management
 
-- (void)didReceiveMemoryWarning {	
+- (void)didReceiveMemoryWarning {
+	
     [super didReceiveMemoryWarning];
 }
 
 - (void)dealloc {
+	
 	[searchData release];
 	[footerShadowView release];
 	[navigationBar release];

@@ -13,6 +13,7 @@
 @class EGORefreshTableHeaderView;
 @class LoadingView;
 @class ShadowView;
+@class FlightViewController;
 
 @interface ScheduleTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate> {
 	
@@ -64,6 +65,8 @@
 - (void)reloadTableViewDataSource;
 - (void)doneLoadingTableViewData;
 - (void)loadData;
+
+// For segment controls
 - (IBAction)switchSegment;
 
 @end
