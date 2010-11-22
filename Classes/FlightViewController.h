@@ -10,7 +10,7 @@
 
 @class Flight;
 
-@interface FlightViewController : UITableViewController {
+@interface FlightViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
 
 	Flight *flight;
 

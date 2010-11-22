@@ -92,7 +92,7 @@
 		//		
 		//				
 		// ADD PROPER AIRLINE NAME FROM DATA FILE, IF PRESENT
-		// XML FEED GIVE NAME WAS ASSIGNED EARLIER!
+		// NAME AS PER XML FEED NAME WAS ASSIGNED EARLIER!
 		
 		if ([colorsForCurrentFlight objectForKey:@"Name"] != nil) {
 			flight.airlineName = [colorsForCurrentFlight objectForKey:@"Name"];
@@ -196,6 +196,11 @@
 		[tempSchedule addObject:flight];				
 		[flight release];
 	}
+	
+	//
+	//	
+	// PARSE DATA METHOD DOES SOME ADDITIONAL TASKS DONE BELOW:
+	// THEY ARE:
 	
 	//
 	//

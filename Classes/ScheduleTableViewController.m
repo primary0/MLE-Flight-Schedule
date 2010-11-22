@@ -15,6 +15,7 @@
 #import "LoadingView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ShadowView.h"
+// #import "RRSGlowLabel.h" // GLOW EFFECT LIBRARY
 
 #pragma mark -
 #pragma mark Custom Interfaces
@@ -311,7 +312,8 @@
 	
 	// SETUP LABEL DEFINITIONS
 	
-	UILabel *nameLabel = (UILabel *) [cell viewWithTag:1];	
+	//RRSGlowLabel *nameLabel = (RRSGlowLabel *) [cell viewWithTag:1]; // DECLARATION FOR GLOW EFFECT
+	UILabel *nameLabel = (RRSGlowLabel *) [cell viewWithTag:1];	
 	UILabel *flightNumberLabel = (UILabel *) [cell viewWithTag:2];
 	UILabel *routeLabel = (UILabel *) [cell viewWithTag:3];
 	UILabel *timeLabel = (UILabel *) [cell viewWithTag:4];
@@ -355,13 +357,24 @@
 	routeLabel.textColor = flight.textColor;
 	timeLabel.textColor = flight.textColor;
 	statusLabel.textColor = flight.textColor;
-	nameLabel.shadowColor = flight.nameShadowColor;
-	timeLabel.shadowColor = flight.timeShadowColor;
+	nameLabel.shadowColor = flight.nameShadowColor;	
+	timeLabel.shadowColor = flight.timeShadowColor;	
 	statusLabel.shadowColor = flight.timeShadowColor;
+	
+	// SETTING BEFORE ENABLING GLOW EFFECT
+	// nameLabel.shadowColor = nil; 
+
 	
 	// AIRLINE NAME
 	
 	nameLabel.text = flight.airlineName;
+	
+	// TEXT GLOW
+	// MUST FIRST CHANGE LABEL CLAS TO RRSGlowLabel
+	//
+	// nameLabel.glowColor = nameLabel.textColor;
+	// nameLabel.glowOffset = CGSizeMake(0.0, 0.0);
+    // nameLabel.glowAmount = 0.5;	
 	
 	// DONE, RETURN
 		
@@ -464,7 +477,7 @@
 	firstLaunch = YES;
 	emptyTableView = YES;
 	
-	// INITIALIZE AND ALLOCATE AN AN NSMUTABLEARRAY FOR SEARCH DATA
+	// INITIALIZE AND ALLOCATE AN NSMUTABLEARRAY FOR SEARCH DATA
 	
 	NSMutableArray *temp = [[NSMutableArray alloc] init];
 	self.searchData = temp;
