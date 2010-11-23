@@ -15,12 +15,14 @@
 	Flight *flight;
 	UITableView *tableView;
 	UITableViewCell *nibDetailCell;
+	UITableViewCell *nibHeaderCell;
 	UIView *headerBackground;
 }
 
 @property (nonatomic, retain) Flight *flight;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UITableViewCell *nibDetailCell;
+@property (nonatomic, retain) IBOutlet UITableViewCell *nibHeaderCell;
 @property (nonatomic, retain) IBOutlet UIView *headerBackground;
 
 @end

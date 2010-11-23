@@ -13,6 +13,7 @@
 @implementation FlightViewController
 @synthesize flight;
 @synthesize nibDetailCell;
+@synthesize nibHeaderCell;
 @synthesize headerBackground;
 @synthesize tableView;
 
@@ -62,31 +63,35 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
+	// THE RETURN VARIABLES ARE INCREMENTED BY 1
+	// THIS ADDS AN ADDITIONAL ROW (FOR THE TITLE) TO THE SECTION
+	
 	int result;
 	switch (section) {
 		case 0:
 			if (self.flight.status == nil) {
-				result = 1;
-			}
-			else {
 				result = 2;
-			}
-			break; 
-		case 1:
-			if (self.flight.estimated == nil) {
-				result = 2;				
 			}
 			else {
 				result = 3;
 			}
+			break; 
+		case 1:
+			if (self.flight.estimated == nil) {
+				result = 3;				
+			}
+			else {
+				result = 4;
+			}
 			break;
 		case 2:
-			result = 1;
+			result = 2;
 			break;
 	}
 	return result;
 }
 
+/*
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
 	UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 300.0, 44.0)];
@@ -125,6 +130,7 @@
 	
 	return customView;
 }
+*/
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -134,7 +140,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 	[[NSBundle mainBundle] loadNibNamed:@"DetailCell" owner:self options:NULL];
+	[[NSBundle mainBundle] loadNibNamed:@"DetailHeaderCell" owner:self options:NULL];
 	UITableViewCell *cell = self.nibDetailCell;
+	UITableViewCell *headerCell = self.nibHeaderCell;
 	
 	cell.userInteractionEnabled = NO;
     
@@ -142,9 +150,11 @@
 	
 	UILabel *keyLabel = (UILabel *) [cell viewWithTag:1];	
 	UILabel *valueLabel = (UILabel *) [cell viewWithTag:2];
+	UILabel *headerLabel = (UILabel *) [headerCell viewWithTag:1];
 	
 	keyLabel.text = nil;
 	valueLabel.text = nil;
+	headerLabel.text = nil;
 	
 	// SET FIELD TEXTS
 	
@@ -155,10 +165,14 @@
 		case 0:
 			switch (indexPath.row) {
 				case 0:
+					headerLabel.text = [NSString stringWithString:@"Flight Status"];
+					cell = headerCell;
+					break;
+				case 1:
 					keyLabel.text = [NSString stringWithString:@"Flight Number"];
 					valueLabel.text = [NSString stringWithFormat:@"%@", self.flight.flightId];
 					break;
-				case 1:
+				case 2:
 					keyLabel.text = [NSString stringWithString:@"Status"];	
 					valueLabel.text = [NSString stringWithFormat:@"%@", self.flight.status];
 					
@@ -166,51 +180,63 @@
 			}
 			break;	
 			
-		// SECOND SECTION
+		// SECOND SECTION: TIMES
 			
 		case 1:
 			switch (indexPath.row) {
 				case 0:
+					headerLabel.text = [NSString stringWithString:@"Flight Times"];
+					cell = headerCell;
+					break;
+				case 1:
 					cell.textLabel.text = self.flight.date;
 					cell.textLabel.textAlignment = UITextAlignmentCenter;
 					cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
 					cell.textLabel.textColor = [UIColor whiteColor];
 					break;
-				case 1:
+				case 2:
 					keyLabel.text = [NSString stringWithString:@"Scheduled Time"];
 					valueLabel.text = [NSString stringWithFormat:@"%@", self.flight.scheduled];
 					break;
-				case 2:
+				case 3:
 					keyLabel.text = [NSString stringWithString:@"Estimated Time"];
 					valueLabel.text = [NSString stringWithFormat:@"%@", self.flight.estimated];
 					break;
 			}
 			break;
 			
-		// THIRD SECTION
+		// THIRD SECTION: PUSH NOTIFICATIONS SECTION
 			
 		case 2:
-			
-			// REMOVE EXISTING LABELS (THE ONES SET IN THE XIB) FROM CELL
-			
-			[keyLabel removeFromSuperview];
-			[valueLabel removeFromSuperview];
-			
-			
-			// SET LABEL AND SWITCH
-			
-			cell.textLabel.text = @"Flight status alerts";
-			cell.textLabel.textColor = [UIColor whiteColor];
-			cell.textLabel.font = [UIFont systemFontOfSize:14];
-			[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-			
-			UISwitch *nSwitch = [[UISwitch alloc] init];
-			nSwitch.tag = 9;
-			cell.accessoryView = nSwitch;
-			[nSwitch release];
-			
-			cell.userInteractionEnabled = YES;
-			
+			switch (indexPath.row) {
+				case 0:
+					headerLabel.text = [NSString stringWithString:@"Push Notifications"];
+					cell = headerCell;
+					break;
+				case 1:
+										
+					// PUSH NOTIFICATIONS SWITCH CELL
+					// REMOVE EXISTING LABELS (THE ONES SET IN THE XIB) FROM CELL
+					
+					[keyLabel removeFromSuperview];
+					[valueLabel removeFromSuperview];
+					
+					
+					// SET LABEL AND SWITCH
+					
+					cell.textLabel.text = @"Flight status alerts";
+					cell.textLabel.textColor = [UIColor whiteColor];
+					cell.textLabel.font = [UIFont systemFontOfSize:14];
+					[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+					
+					UISwitch *nSwitch = [[UISwitch alloc] init];
+					nSwitch.tag = 9;
+					cell.accessoryView = nSwitch;
+					[nSwitch release];
+					
+					cell.userInteractionEnabled = YES;
+					break;
+			}						
 			break;
 	}
 	
@@ -243,6 +269,7 @@
 
 
 - (void)dealloc {
+	[nibHeaderCell release];
 	[tableView release];
 	[headerBackground release];
 	[nibDetailCell release];

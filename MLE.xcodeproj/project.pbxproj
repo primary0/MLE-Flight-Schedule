@@ -57,6 +57,9 @@
 		FFD12A4F128D467200096B3A /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD12A47128D467200096B3A /* whiteArrow@2x.png */; };
 		FFD12A5B128D46C400096B3A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD12A5A128D46C400096B3A /* OpenGLES.framework */; };
 		FFD12A63128D475400096B3A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD12A62128D475400096B3A /* QuartzCore.framework */; };
+		FFE64852129C39F70067E021 /* DetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFE64851129C39F70067E021 /* DetailHeaderCell.xib */; };
+		FFE648A8129C3FF20067E021 /* detailHeaderBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE648A6129C3FF20067E021 /* detailHeaderBackground@2x.png */; };
+		FFE648E2129C435A0067E021 /* detailHeaderBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE648E1129C435A0067E021 /* detailHeaderBackground.png */; };
 		FFFBAEBC128A7876001D59CA /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFBAEA3128A7876001D59CA /* CXMLDocument_CreationExtensions.m */; };
 		FFFBAEBD128A7876001D59CA /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFBAEA5128A7876001D59CA /* CXMLNode_CreationExtensions.m */; };
 		FFFBAEBE128A7876001D59CA /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFBAEA7128A7876001D59CA /* CXMLDocument_PrivateExtensions.m */; };
@@ -141,6 +144,9 @@
 		FFD12A47128D467200096B3A /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		FFD12A5A128D46C400096B3A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FFD12A62128D475400096B3A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FFE64851129C39F70067E021 /* DetailHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHeaderCell.xib; sourceTree = "<group>"; };
+		FFE648A6129C3FF20067E021 /* detailHeaderBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detailHeaderBackground@2x.png"; sourceTree = "<group>"; };
+		FFE648E1129C435A0067E021 /* detailHeaderBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detailHeaderBackground.png; sourceTree = "<group>"; };
 		FFFBAEA2128A7876001D59CA /* CXMLDocument_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_CreationExtensions.h; sourceTree = "<group>"; };
 		FFFBAEA3128A7876001D59CA /* CXMLDocument_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_CreationExtensions.m; sourceTree = "<group>"; };
 		FFFBAEA4128A7876001D59CA /* CXMLNode_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_CreationExtensions.h; sourceTree = "<group>"; };
@@ -298,6 +304,8 @@
 		FFBC8E85128B12F6002490EE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FFE648E1129C435A0067E021 /* detailHeaderBackground.png */,
+				FFE648A6129C3FF20067E021 /* detailHeaderBackground@2x.png */,
 				FF4632D3129C1C41002901BE /* detailBackground.png */,
 				FF4AD053129C067800ED26D3 /* detailBackground@2x.png */,
 				FF4ACF43129BDAB100ED26D3 /* headerShadow.png */,
@@ -432,6 +440,7 @@
 				FFBC8D43128AEEE2002490EE /* DepartureTableView.xib */,
 				FFBC8F2D128B2BC7002490EE /* ScheduleHeader.xib */,
 				FF4ACE22129BB7D500ED26D3 /* DetailCell.xib */,
+				FFE64851129C39F70067E021 /* DetailHeaderCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -540,6 +549,9 @@
 				FF4ACF46129BDAB100ED26D3 /* headerShadow@2x.png in Resources */,
 				FF4AD055129C067800ED26D3 /* detailBackground@2x.png in Resources */,
 				FF4632D4129C1C41002901BE /* detailBackground.png in Resources */,
+				FFE64852129C39F70067E021 /* DetailHeaderCell.xib in Resources */,
+				FFE648A8129C3FF20067E021 /* detailHeaderBackground@2x.png in Resources */,
+				FFE648E2129C435A0067E021 /* detailHeaderBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
