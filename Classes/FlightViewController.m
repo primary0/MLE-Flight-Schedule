@@ -6,6 +6,7 @@
 //  Copyright 2010 primary0.com. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "FlightViewController.h"
 #import "Flight.h"
 
@@ -47,8 +48,7 @@
 	
 	// VIEW HEADER STYLING
 	
-	self.headerBackground.backgroundColor = self.flight.backgroundColor;
-	
+	self.headerBackground.backgroundColor = self.flight.backgroundColor;	
 	self.tableView.backgroundColor = [UIColor clearColor];
 }
 

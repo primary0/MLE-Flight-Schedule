@@ -376,9 +376,6 @@
 	// nameLabel.glowOffset = CGSizeMake(0.0, 0.0);
     // nameLabel.glowAmount = 0.5;	
 	
-	
-	cell.selectionStyle = UITableViewCellSelectionStyleGray;
-	
 	// DONE, RETURN
 		
     return cell;
