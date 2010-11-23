@@ -17,17 +17,15 @@
 	
     [super viewDidLoad];
 	
+	self.title = @"Arrivals";
+	
 	self.loadingView = [LoadingView loadingViewInView:self.view];
-	
-	NSLog(@"Initializing schedule object");
-	
+		
 	Schedule *flightSchedule = [[Schedule alloc] init];
-	flightSchedule.url = [NSString stringWithString:@"http://www.fis.com.mv/xml/arrive.xml"];
+	flightSchedule.url = [NSString stringWithString:ARRIVALS_URL];
 	self.schedule = flightSchedule;
 	[flightSchedule release];
 	
-	NSLog(@"Schedule object initialized");
-
 	[self loadData];
 }
 

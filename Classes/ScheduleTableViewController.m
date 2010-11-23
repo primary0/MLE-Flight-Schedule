@@ -296,7 +296,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
 		[[NSBundle mainBundle] loadNibNamed:@"FlightCell" owner:self options:NULL];
-		cell = nibLoadedCell;
+		cell = self.nibLoadedCell;
     }
 	
 	// ASSIGN FLIGHT OBJECT
@@ -313,7 +313,7 @@
 	// SETUP LABEL DEFINITIONS
 	
 	//RRSGlowLabel *nameLabel = (RRSGlowLabel *) [cell viewWithTag:1]; // DECLARATION FOR GLOW EFFECT
-	UILabel *nameLabel = (RRSGlowLabel *) [cell viewWithTag:1];	
+	UILabel *nameLabel = (UILabel *) [cell viewWithTag:1];	
 	UILabel *flightNumberLabel = (UILabel *) [cell viewWithTag:2];
 	UILabel *routeLabel = (UILabel *) [cell viewWithTag:3];
 	UILabel *timeLabel = (UILabel *) [cell viewWithTag:4];
@@ -335,7 +335,7 @@
 	
 	// TIMES
 	
-	if ([flight.estimated isEqualToString:@""]) {
+	if (flight.estimated == nil) {
 		timeLabel.text = flight.scheduled;
 	}
 	else {
@@ -375,6 +375,9 @@
 	// nameLabel.glowColor = nameLabel.textColor;
 	// nameLabel.glowOffset = CGSizeMake(0.0, 0.0);
     // nameLabel.glowAmount = 0.5;	
+	
+	
+	cell.selectionStyle = UITableViewCellSelectionStyleGray;
 	
 	// DONE, RETURN
 		
@@ -430,12 +433,10 @@
     [self.searchData removeAllObjects];
     for (NSMutableArray *section in tableData) {
 		for (Flight *flight in section) {
-			NSPredicate *predicate = [NSPredicate predicateWithFormat:
-									  @"(SELF contains[cd] %@)", searchText];
-						
+			NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(SELF contains[cd] %@)", searchText];
 			BOOL resultFlightNumber = [predicate evaluateWithObject:flight.flightId];
 			BOOL resultName = [predicate evaluateWithObject:flight.airlineName];
-			BOOL resultRoute = [predicate evaluateWithObject:flight.route];			
+			BOOL resultRoute = [predicate evaluateWithObject:flight.route];
 			
 			if (resultFlightNumber || resultName || resultRoute) {
 				[self.searchData addObject:flight];
@@ -460,17 +461,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	// SET A PAGE TITLE. NEEDED FOR THE DETAILVIEW'S BACK BUTTON
-	
-	switch (self.segmentButtons.selectedSegmentIndex) {
-		case 0:
-			self.title = @"International";
-			break; 
-		case 1:
-			self.title = @"Domestic";
-			break;
-	}	
 		
 	// SOME INSTANCE VARIABLES
 	

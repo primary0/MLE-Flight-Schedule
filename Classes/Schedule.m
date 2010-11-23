@@ -52,6 +52,9 @@
 		
 		flight.scheduled	= [flightDictionary valueForKey:@"Scheduled"];
 		flight.estimated	= [[flightDictionary valueForKey:@"Estimated"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		if ([flight.estimated length] == 0) {
+			flight.estimated = nil;
+		}
 		
 		//
 		//
@@ -59,7 +62,7 @@
 				
 		[dateFormat setDateFormat:@"yyyyMMdd"];
 		date = [dateFormat dateFromString:[flightDictionary valueForKey:@"Date"]];		
-		[dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
+		[dateFormat setDateFormat:@"EEEE, d MMMM YYYY"];
 		flight.date = [NSString stringWithString:[dateFormat stringFromDate:date]];
 		
 		//
@@ -132,6 +135,20 @@
 		else if ([flight.carrierType isEqualToString:@"D"]) {
 			[domesticArray addObject:flight];
 		}
+		
+		//
+		//
+		// INBOUND OR OUTBOUND FLIGHT
+		
+		BOOL direction;
+				
+		if ([self.url isEqualToString:ARRIVALS_URL]) {
+			direction = YES;
+		}
+		else {
+			direction = NO;
+		}
+		flight.inbound =  direction;
 		
 		//
 		//

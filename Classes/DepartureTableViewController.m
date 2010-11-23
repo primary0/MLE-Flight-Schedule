@@ -14,12 +14,17 @@
 @implementation DepartureTableViewController
 
 - (void)viewDidLoad {	
-	[super viewDidLoad];
 	
-	self.loadingView = [LoadingView loadingViewInView:self.view];	
+    [super viewDidLoad];
 	
-	self.schedule = [[Schedule alloc] init];
-	self.schedule.url = @"http://www.fis.com.mv/xml/depart.xml";
+	self.title = @"Departures";
+	
+	self.loadingView = [LoadingView loadingViewInView:self.view];
+	
+	Schedule *flightSchedule = [[Schedule alloc] init];
+	flightSchedule.url = [NSString stringWithString:DEPARTURES_URL];
+	self.schedule = flightSchedule;
+	[flightSchedule release];
 	
 	[self loadData];
 }

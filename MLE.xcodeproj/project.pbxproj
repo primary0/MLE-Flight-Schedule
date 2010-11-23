@@ -25,6 +25,13 @@
 		FF28E9FB1292B82400C254A8 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF28E9F51292B82400C254A8 /* star@2x.png */; };
 		FF28EA131292BCEA00C254A8 /* cellgradient.png in Resources */ = {isa = PBXBuildFile; fileRef = FF28EA121292BCEA00C254A8 /* cellgradient.png */; };
 		FF28EA151292BD0100C254A8 /* cellgradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF28EA141292BD0100C254A8 /* cellgradient@2x.png */; };
+		FF4ACE23129BB7D500ED26D3 /* DetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF4ACE22129BB7D500ED26D3 /* DetailCell.xib */; };
+		FF4ACF2D129BD78600ED26D3 /* detailHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4ACF2B129BD78600ED26D3 /* detailHeader.png */; };
+		FF4ACF2E129BD78600ED26D3 /* detailHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4ACF2C129BD78600ED26D3 /* detailHeader@2x.png */; };
+		FF4ACF45129BDAB100ED26D3 /* headerShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4ACF43129BDAB100ED26D3 /* headerShadow.png */; };
+		FF4ACF46129BDAB100ED26D3 /* headerShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4ACF44129BDAB100ED26D3 /* headerShadow@2x.png */; };
+		FF4AD054129C067800ED26D3 /* detailBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4AD052129C067800ED26D3 /* detailBackground.png */; };
+		FF4AD055129C067800ED26D3 /* detailBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4AD053129C067800ED26D3 /* detailBackground@2x.png */; };
 		FF7403101295A76C0048C3AB /* Flight.m in Sources */ = {isa = PBXBuildFile; fileRef = FF74030D1295A76C0048C3AB /* Flight.m */; };
 		FF7403111295A76C0048C3AB /* Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = FF74030F1295A76C0048C3AB /* Schedule.m */; };
 		FF749257129A6EC600520307 /* FlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF749255129A6EC600520307 /* FlightViewController.m */; };
@@ -92,6 +99,13 @@
 		FF28E9F51292B82400C254A8 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
 		FF28EA121292BCEA00C254A8 /* cellgradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellgradient.png; sourceTree = "<group>"; };
 		FF28EA141292BD0100C254A8 /* cellgradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellgradient@2x.png"; sourceTree = "<group>"; };
+		FF4ACE22129BB7D500ED26D3 /* DetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCell.xib; sourceTree = "<group>"; };
+		FF4ACF2B129BD78600ED26D3 /* detailHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detailHeader.png; sourceTree = "<group>"; };
+		FF4ACF2C129BD78600ED26D3 /* detailHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detailHeader@2x.png"; sourceTree = "<group>"; };
+		FF4ACF43129BDAB100ED26D3 /* headerShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headerShadow.png; sourceTree = "<group>"; };
+		FF4ACF44129BDAB100ED26D3 /* headerShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headerShadow@2x.png"; sourceTree = "<group>"; };
+		FF4AD052129C067800ED26D3 /* detailBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detailBackground.png; sourceTree = "<group>"; };
+		FF4AD053129C067800ED26D3 /* detailBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detailBackground@2x.png"; sourceTree = "<group>"; };
 		FF74030C1295A76C0048C3AB /* Flight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flight.h; sourceTree = "<group>"; };
 		FF74030D1295A76C0048C3AB /* Flight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flight.m; sourceTree = "<group>"; };
 		FF74030E1295A76C0048C3AB /* Schedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Schedule.h; sourceTree = "<group>"; };
@@ -284,6 +298,12 @@
 		FFBC8E85128B12F6002490EE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FF4AD052129C067800ED26D3 /* detailBackground.png */,
+				FF4AD053129C067800ED26D3 /* detailBackground@2x.png */,
+				FF4ACF43129BDAB100ED26D3 /* headerShadow.png */,
+				FF4ACF44129BDAB100ED26D3 /* headerShadow@2x.png */,
+				FF4ACF2B129BD78600ED26D3 /* detailHeader.png */,
+				FF4ACF2C129BD78600ED26D3 /* detailHeader@2x.png */,
 				FF28EA141292BD0100C254A8 /* cellgradient@2x.png */,
 				FF28EA121292BCEA00C254A8 /* cellgradient.png */,
 				FF28E9F01292B82400C254A8 /* arrowdown.png */,
@@ -411,6 +431,7 @@
 				FFFBB08E128A8832001D59CA /* FlightCell.xib */,
 				FFBC8D43128AEEE2002490EE /* DepartureTableView.xib */,
 				FFBC8F2D128B2BC7002490EE /* ScheduleHeader.xib */,
+				FF4ACE22129BB7D500ED26D3 /* DetailCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -512,6 +533,13 @@
 				FF28EA131292BCEA00C254A8 /* cellgradient.png in Resources */,
 				FF28EA151292BD0100C254A8 /* cellgradient@2x.png in Resources */,
 				FF749258129A6EC600520307 /* FlightViewController.xib in Resources */,
+				FF4ACE23129BB7D500ED26D3 /* DetailCell.xib in Resources */,
+				FF4ACF2D129BD78600ED26D3 /* detailHeader.png in Resources */,
+				FF4ACF2E129BD78600ED26D3 /* detailHeader@2x.png in Resources */,
+				FF4ACF45129BDAB100ED26D3 /* headerShadow.png in Resources */,
+				FF4ACF46129BDAB100ED26D3 /* headerShadow@2x.png in Resources */,
+				FF4AD054129C067800ED26D3 /* detailBackground.png in Resources */,
+				FF4AD055129C067800ED26D3 /* detailBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +625,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				OTHER_LDFLAGS = "-lxml2";
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -612,7 +640,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				OTHER_LDFLAGS = "-lxml2";
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

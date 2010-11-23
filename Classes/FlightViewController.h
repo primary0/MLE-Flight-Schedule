@@ -13,9 +13,14 @@
 @interface FlightViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
 
 	Flight *flight;
-
+	UITableView *tableView;
+	UITableViewCell *nibDetailCell;
+	UIView *headerBackground;
 }
 
 @property (nonatomic, retain) Flight *flight;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UITableViewCell *nibDetailCell;
+@property (nonatomic, retain) IBOutlet UIView *headerBackground;
 
 @end

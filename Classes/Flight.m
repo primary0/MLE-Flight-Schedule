@@ -25,6 +25,7 @@
 @synthesize textColor;
 @synthesize nameShadowColor;
 @synthesize timeShadowColor;
+@synthesize inbound;
 
 #pragma mark -
 #pragma mark Memory management

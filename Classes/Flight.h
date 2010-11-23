@@ -45,6 +45,7 @@
 	UIColor		*textColor;
 	UIColor		*nameShadowColor;
 	UIColor		*timeShadowColor;
+	BOOL		inbound;
 }
 
 @property (nonatomic, retain) NSString	*airlineId;
@@ -61,5 +62,6 @@
 @property (nonatomic, retain) UIColor	*textColor;
 @property (nonatomic, retain) UIColor	*nameShadowColor;
 @property (nonatomic, retain) UIColor	*timeShadowColor;
+@property (nonatomic) BOOL inbound;
 
 @end

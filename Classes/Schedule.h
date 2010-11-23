@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+// IMPORTANT:
+// THE CONSTANS BELOW ARE DEFINED TWICE.
+// SECOND DEFINITION IS IN SCHEDULETABLEVIEWCONTROLLER.H
+
+#define ARRIVALS_URL @"http://www.fis.com.mv/xml/arrive.xml"
+#define DEPARTURES_URL @"http://www.fis.com.mv/xml/depart.xml"
+
 @class Flight;
 
 @interface Schedule : NSObject <NSXMLParserDelegate> {	

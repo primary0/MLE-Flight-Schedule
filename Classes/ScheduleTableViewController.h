@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+// IMPORTANT:
+// THE CONSTANS BELOW ARE DEFINED TWICE.
+// SECOND DEFINITION IS IN SCHEDULE.H
+ 
+#define ARRIVALS_URL @"http://www.fis.com.mv/xml/arrive.xml"
+#define DEPARTURES_URL @"http://www.fis.com.mv/xml/depart.xml"
+
 @class Flight;
 @class Schedule;
 @class EGORefreshTableHeaderView;
