@@ -352,14 +352,14 @@
 	
 	// COLORS
 	
-	nameLabel.textColor = flight.foregroundColor;
+	nameLabel.textColor			= flight.foregroundColor;
 	flightNumberLabel.textColor = flight.textColor;
-	routeLabel.textColor = flight.textColor;
-	timeLabel.textColor = flight.textColor;
-	statusLabel.textColor = flight.textColor;
-	nameLabel.shadowColor = flight.nameShadowColor;	
-	timeLabel.shadowColor = flight.timeShadowColor;	
-	statusLabel.shadowColor = flight.timeShadowColor;
+	routeLabel.textColor		= flight.textColor;
+	timeLabel.textColor			= flight.textColor;
+	statusLabel.textColor		= flight.textColor;
+	nameLabel.shadowColor		= flight.nameShadowColor;	
+	timeLabel.shadowColor		= flight.timeShadowColor;	
+	statusLabel.shadowColor		= flight.timeShadowColor;
 	
 	// SETTING BEFORE ENABLING GLOW EFFECT
 	// nameLabel.shadowColor = nil; 
@@ -428,13 +428,13 @@
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     [self.searchData removeAllObjects];
-    for (NSMutableArray *section in tableData) {
-		for (Flight *flight in section) {
+	
+    for (NSMutableArray *section in tableData) {		
+		for (Flight *flight in section) {			
 			NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(SELF contains[cd] %@)", searchText];
 			BOOL resultFlightNumber = [predicate evaluateWithObject:flight.flightId];
 			BOOL resultName = [predicate evaluateWithObject:flight.airlineName];
-			BOOL resultRoute = [predicate evaluateWithObject:flight.route];
-			
+			BOOL resultRoute = [predicate evaluateWithObject:flight.route];			
 			if (resultFlightNumber || resultName || resultRoute) {
 				[self.searchData addObject:flight];
 			}

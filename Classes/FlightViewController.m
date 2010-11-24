@@ -64,7 +64,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
 	// THE RETURN VARIABLES ARE INCREMENTED BY 1
-	// THIS ADDS AN ADDITIONAL ROW (FOR THE TITLE) TO THE SECTION
+	// THIS ADDS AN ADDITIONAL ROW (FOR THE TITLE) TO EACH SECTION
 	
 	int result;
 	switch (section) {
@@ -130,12 +130,13 @@
 	
 	return customView;
 }
-*/
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
 	return 44.0;
 }
+ 
+*/
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -247,7 +248,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return 40;
 }
 
 
