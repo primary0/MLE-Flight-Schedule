@@ -69,9 +69,9 @@
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
 								<reference key="IBUIHighlightedColor" ref="763529773"/>
-								<object class="NSColor" key="IBUIShadowColor" id="757365616">
+								<object class="NSColor" key="IBUIShadowColor" id="1003097886">
 									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
+									<bytes key="NSWhite">MAA</bytes>
 								</object>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
@@ -96,7 +96,7 @@
 								</object>
 								<reference key="IBUITextColor" ref="763529773"/>
 								<reference key="IBUIHighlightedColor" ref="763529773"/>
-								<reference key="IBUIShadowColor" ref="757365616"/>
+								<reference key="IBUIShadowColor" ref="1003097886"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">1</int>
@@ -117,7 +117,10 @@
 				</object>
 				<string key="NSFrameSize">{300, 40}</string>
 				<reference key="NSSuperview"/>
-				<reference key="IBUIBackgroundColor" ref="757365616"/>
+				<object class="NSColor" key="IBUIBackgroundColor">
+					<int key="NSColorSpace">3</int>
+					<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
+				</object>
 				<bool key="IBUIUserInteractionEnabled">NO</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISeparatorStyle">1</int>

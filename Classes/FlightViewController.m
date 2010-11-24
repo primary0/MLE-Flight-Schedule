@@ -194,6 +194,7 @@
 					cell.textLabel.textAlignment = UITextAlignmentCenter;
 					cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
 					cell.textLabel.textColor = [UIColor whiteColor];
+					cell.textLabel.shadowColor = [UIColor blackColor];
 					break;
 				case 2:
 					keyLabel.text = [NSString stringWithString:@"Scheduled Time"];
@@ -228,6 +229,7 @@
 					cell.textLabel.text = @"Flight status alerts";
 					cell.textLabel.textColor = [UIColor whiteColor];
 					cell.textLabel.font = [UIFont systemFontOfSize:14];
+					cell.textLabel.shadowColor = [UIColor blackColor];
 					[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
 					
 					UISwitch *nSwitch = [[UISwitch alloc] init];
