@@ -405,6 +405,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
+	
+	// DIDSELECT CELL STYLING		
+	
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+	
+	UILabel *nameLabel = (UILabel *) [cell viewWithTag:1];	
+	UILabel *flightNumberLabel = (UILabel *) [cell viewWithTag:2];
+	UILabel *routeLabel = (UILabel *) [cell viewWithTag:3];
+	UILabel *timeLabel = (UILabel *) [cell viewWithTag:4];
+	UILabel *statusLabel = (UILabel *) [cell viewWithTag:5];
+	
+	nameLabel.textColor = [UIColor whiteColor];
+	flightNumberLabel.textColor = [UIColor whiteColor];
+	routeLabel.textColor = [UIColor whiteColor];
+	timeLabel.textColor = [UIColor whiteColor];
+	statusLabel.textColor = [UIColor whiteColor];
+	nameLabel.shadowColor = [UIColor blackColor];
+	timeLabel.shadowColor = [UIColor blackColor];
+	
+	cell.backgroundColor = [UIColor blueColor];
+	
+	// SETUP FLIGHT OBJECT FOR DETAIL VIEW
+	
 	FlightViewController *flightViewController = [[FlightViewController alloc] initWithNibName:@"FlightViewController" bundle:nil];
 
 	Flight *flight;
@@ -420,6 +443,29 @@
 	
 	[self.navigationController pushViewController:flightViewController animated:YES];
 	[flightViewController release];
+}
+
+-(NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+	
+	UILabel *nameLabel = (UILabel *) [cell viewWithTag:1];	
+	UILabel *flightNumberLabel = (UILabel *) [cell viewWithTag:2];
+	UILabel *routeLabel = (UILabel *) [cell viewWithTag:3];
+	UILabel *timeLabel = (UILabel *) [cell viewWithTag:4];
+	UILabel *statusLabel = (UILabel *) [cell viewWithTag:5];
+	
+	nameLabel.textColor = [UIColor whiteColor];
+	flightNumberLabel.textColor = [UIColor whiteColor];
+	routeLabel.textColor = [UIColor whiteColor];
+	timeLabel.textColor = [UIColor whiteColor];
+	statusLabel.textColor = [UIColor whiteColor];
+	nameLabel.shadowColor = [UIColor blackColor];
+	timeLabel.shadowColor = [UIColor blackColor];
+	
+	cell.backgroundColor = [UIColor blueColor];
+	
+    return indexPath;
 }
 
 #pragma mark -

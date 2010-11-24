@@ -52,7 +52,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{1, 0}, {319, 80}}</string>
 								<reference key="NSSuperview" ref="121825867"/>
-								<float key="IBUIAlpha">0.60000002384185791</float>
+								<float key="IBUIAlpha">0.80000001192092896</float>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -202,7 +202,7 @@
 				<int key="IBUIContentMode">3</int>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
-				<int key="IBUISelectionStyle">2</int>
+				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="121825867"/>
 				<string key="IBUIReuseIdentifier">Cell</string>
 			</object>

@@ -86,8 +86,8 @@
 		}
 		else {						
 			flight.backgroundColor	= [UIColor whiteColor];
-			flight.foregroundColor	= [UIColor blackColor];
-			flight.textColor		= [UIColor blackColor];
+			flight.foregroundColor	= [UIColor darkGrayColor];
+			flight.textColor		= [UIColor darkGrayColor];
 			flight.nameShadowColor	= [UIColor whiteColor];
 			flight.timeShadowColor	= [UIColor whiteColor];
 		}
