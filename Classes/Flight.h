@@ -46,6 +46,7 @@
 	UIColor		*nameShadowColor;
 	UIColor		*timeShadowColor;
 	BOOL		inbound;
+	BOOL		favorite;
 }
 
 @property (nonatomic, retain) NSString	*airlineId;
@@ -63,5 +64,10 @@
 @property (nonatomic, retain) UIColor	*nameShadowColor;
 @property (nonatomic, retain) UIColor	*timeShadowColor;
 @property (nonatomic) BOOL inbound;
+@property (nonatomic) BOOL favorite;
+
++ (BOOL)isFavorite:(NSString *)flightNumber;
+- (void)toggleFavorite;
+- (void)updateFavoritesFile;
 
 @end

@@ -25,4 +25,6 @@
 @property (nonatomic, retain) IBOutlet UITableViewCell *nibHeaderCell;
 @property (nonatomic, retain) IBOutlet UIView *headerBackground;
 
+- (void)toggleFlightFavoriteStatus;
+
 @end

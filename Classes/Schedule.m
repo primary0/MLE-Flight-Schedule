@@ -152,6 +152,11 @@
 		
 		//
 		//
+		// SET FLIGHT FAVORITE STATUS
+		flight.favorite = [Flight isFavorite:flight.flightId];
+		
+		//
+		//
 		// DONE, RELEASE		
 		[flight release];
 	}	

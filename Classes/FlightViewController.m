@@ -18,6 +18,25 @@
 @synthesize tableView;
 
 #pragma mark -
+#pragma mark Custom Methods
+
+- (void)toggleFlightFavoriteStatus {
+	
+	[self.flight toggleFavorite];
+	
+	UIImage *starImage;
+	
+	if (flight.favorite == YES) {
+		starImage = [UIImage imageNamed:@"whiteStar"];		
+	}
+	else {
+		starImage = [UIImage imageNamed:@"whiteStarDim"];
+	}
+	
+	[self.navigationItem.rightBarButtonItem setImage:starImage];
+}
+
+#pragma mark -
 #pragma mark View lifecycle
 
 - (void)viewDidLoad {
@@ -26,9 +45,18 @@
 	
 	// VIEW TITLE AND NAV BUTTON
 	
+	UIImage *starImage;
+	
+	if (flight.favorite == YES) {
+		starImage = [UIImage imageNamed:@"whiteStar"];		
+	}
+	else {
+		starImage = [UIImage imageNamed:@"whiteStarDim"];
+	}
+	
 	self.title = self.flight.flightId;
 	self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];
-
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithImage:starImage style:UIBarButtonItemStyleBordered target:self action:@selector(toggleFlightFavoriteStatus)] autorelease];
 	
 	// VIEW HEADER SECTION
 	
@@ -59,7 +87,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
@@ -263,7 +290,6 @@
 - (void)viewDidUnload {
 }
 
-
 - (void)dealloc {
 	[nibHeaderCell release];
 	[tableView release];
@@ -272,7 +298,6 @@
 	[flight release];
     [super dealloc];
 }
-
 
 @end
 

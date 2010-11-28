@@ -428,7 +428,7 @@
 	
 	// SETUP FLIGHT OBJECT FOR DETAIL VIEW
 	
-	FlightViewController *flightViewController = [[FlightViewController alloc] initWithNibName:@"FlightViewController" bundle:nil];
+	FlightViewController *flightViewController = [[FlightViewController alloc] initWithNibName:@"FlightView" bundle:nil];
 
 	Flight *flight;
 	
